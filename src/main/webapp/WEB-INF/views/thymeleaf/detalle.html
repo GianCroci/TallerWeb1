@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalle del Producto</title>
+</head>
+<body>
+<h1>Detalle del producto</h1>
+
+<div th:if="${producto != null}">
+    <p>Producto: <span th:text="${producto.nombre}">Producto</span></p>
+    <p>Descripcion: <span th:text="${producto.descripcion}">Descripcion</span></p>
+    <p>Precio: <span th:text="${producto.precio}">Precio</span></p>
+</div>
+
+<div th:if="${producto == null}">
+    <p>Producto no encontrado!</p>
+</div>
+
+<a th:href="@{/productos}">Volver al listado</a>
+
+</body>
+</html>
