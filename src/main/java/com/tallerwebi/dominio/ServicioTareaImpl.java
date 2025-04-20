@@ -9,9 +9,11 @@ import java.util.List;
 public class ServicioTareaImpl implements TareaService{
 
     List<Tarea> tareas = new ArrayList<Tarea>();
+    private long proximoId = 1;
 
     @Override
     public void agregarTarea(Tarea tarea) {
+        tarea.setId(proximoId++);
         tareas.add(tarea);
     }
 

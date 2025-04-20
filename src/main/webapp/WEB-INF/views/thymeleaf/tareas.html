@@ -28,8 +28,8 @@
             <td th:text="${t.nombre}">Nombre de tarea</td>
             <td th:text="${t.estaHecha ? 'Completada' : 'Pendiente'}">Estado</td>
             <td>
-                <form th:action="${'/tareas/'} + ${t.getId()} + ${'/completar'}" method="post"
-                th:if="${'!t.completada'}">
+                <form th:action="@{'/tareas/' + ${t.id} + '/completar'}" method="post"
+                th:if="${!t.estaHecha}">
                     <button type="submit">Marcar como completada</button>
                 </form>
             </td>
