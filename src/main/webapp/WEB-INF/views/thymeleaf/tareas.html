@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agenda de Tareas</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>Agenda de Tareas</h1>
+
+<form th:action="@{/tareas}" method="post" th:object="${nuevaTarea}">
+    <input type="text" th:field="*{nombre}" placeholder="nueva tarea..." required/>
+    <button type="submit">Agregar Tarea</button>
+</form>
+
+<hr/>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="t : ${tareas}">
+            <td th:text="${t.nombre}">Nombre de tarea</td>
+            <td th:text="${t.estaHecha ? 'Completada' : 'Pendiente'}">Estado</td>
+            <td>
+                <form th:action="${'/tareas/'} + ${t.getId()} + ${'/completar'}" method="post"
+                th:if="${'!t.completada'}">
+                    <button type="submit">Marcar como completada</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
