@@ -32,4 +32,14 @@ public class ServicioTareaImpl implements TareaService{
         }
 
     }
+
+    @Override
+    public Tarea obtenerTareaPorId(Long id) {
+        for (Tarea tarea : tareas) {
+            if (tarea.getId().equals(id)) {
+                return tarea;
+            }
+        }
+        return null;
+    }
 }

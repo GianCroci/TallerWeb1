@@ -53,6 +53,26 @@ public class ControladorTareaTest {
 
         verify(servicioTareaMock, times(1)).agregarTarea(nuevaTarea);
         assertThat(modelAndView.getViewName(), equalTo("redirect:/tareas"));
+    }
+
+    @Test
+    public void debeMostrarTareaComoCompletada(){
+        Tarea nuevaTarea = new Tarea();
+        nuevaTarea.setId(1L);
+        nuevaTarea.setNombre("Preparar la presentacion siguiente");
+        nuevaTarea.setEstaHecha(false);
+
+        when(servicioTareaMock.obtenerTareaPorId(1L)).thenReturn(nuevaTarea);
+
+        doAnswer(invoc -> {
+            nuevaTarea.setEstaHecha(true);
+            return null;
+        }).when(servicioTareaMock).marcarComoCompletada(1L);
+
+        ModelAndView modelAndView = controladorTarea.completarTarea(1L);
+
+        assertThat(nuevaTarea.getEstaHecha(), equalTo(true));
+        assertThat(modelAndView.getViewName(), equalTo("redirect:/tareas"));
 
     }
 }
