@@ -10,25 +10,25 @@ import static org.hamcrest.Matchers.equalTo;
 public class ServicioLibroTest {
 
     @Test
-    public void queSePuedaBuscarUnLibroPorElTitulo() {
+    public void queSePuedaBuscarUnLibroPorElTituloOPorElAutor() {
 
         ServicioLibroImpl servicioLibro = new ServicioLibroImpl();
-        List<Libro> resultado = servicioLibro.buscarPorTitulo("Pinocho");
-        String libroEsperado = "Pinocho";
+        List<Libro> resultado = servicioLibro.buscar("Collodi");
+        String libroEsperado1 = "Pinocho";
+        String libroEsperado2 = "Minuzzolo";
 
-        assertThat(libroEsperado, equalTo(resultado.get(0).getTitulo()));
-        assertThat(1, equalTo(resultado.size()));
+        assertThat(libroEsperado1, equalTo(resultado.get(0).getTitulo()));
+        assertThat(libroEsperado2, equalTo(resultado.get(1).getTitulo()));
+        assertThat(2, equalTo(resultado.size()));
     }
 
     @Test
-    public void queSePuedaFiltrarPorAutor(){
+    public void queNoSeDevuelvanResultadosSiLaBusquedaEstaVacia(){
         ServicioLibroImpl servicioLibro = new ServicioLibroImpl();
+        List<Libro> resultado = servicioLibro.buscar("");
 
-
-        String libroEsperado = "Pinocho - Minuzzolo";
-
-        String libroRecibido = servicioLibro.buscarPorAutor("Carlo Collodi");
-
-        assertThat(libroEsperado, equalTo(libroRecibido));
+        assertThat(resultado.isEmpty(), equalTo(true));
     }
+
+
 }

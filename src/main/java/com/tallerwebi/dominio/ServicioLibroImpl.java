@@ -1,9 +1,13 @@
 package com.tallerwebi.dominio;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class ServicioLibroImpl implements  ServicioLibro{
 
     List<Libro> libros = new ArrayList<Libro>(List.of(
@@ -16,29 +20,17 @@ public class ServicioLibroImpl implements  ServicioLibro{
     ));
 
     @Override
-    public List<Libro> buscarPorTitulo(String titulo) {
+    public List<Libro> buscar(String texto) {
+
+        if (texto == null || texto.isEmpty()) {
+            return Collections.emptyList();
+        }
 
         return libros.stream()
-                .filter(libro -> libro.getTitulo().toLowerCase().contains(titulo.toLowerCase()))
+                .filter(libro -> libro.getTitulo().toLowerCase().contains(texto.toLowerCase()) ||
+                        libro.getAutor().toLowerCase().contains(texto.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public String buscarPorAutor(String autor) {
 
-        String titulo = "";
-        Integer contador = 0;
-
-
-        for (Libro libro : libros) {
-            if (libro.getAutor().equalsIgnoreCase(autor) && contador == 0) {
-                contador = 1;
-                titulo = libro.getTitulo();
-            }
-            else if (contador > 0 && libro.getAutor().equalsIgnoreCase(autor)) {
-                titulo += " - " +libro.getTitulo();
-            }
-        }
-        return titulo;
-    }
 }
