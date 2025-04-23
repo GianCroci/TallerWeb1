@@ -1,5 +1,8 @@
-package com.tallerwebi.dominio;
+package com.tallerwebi.presentacion;
 
+import com.tallerwebi.dominio.Libro;
+import com.tallerwebi.dominio.ServicioLibro;
+import com.tallerwebi.dominio.ServicioLibroImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
