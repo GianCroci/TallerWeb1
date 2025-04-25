@@ -15,7 +15,7 @@ public class Perfil {
     private String telefono;
     @OneToOne
     @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    private Usuario usuarioAsociado;
 
     public Perfil() {}
 
@@ -26,6 +26,14 @@ public class Perfil {
 
     public Long getId() {
         return id;
+    }
+
+    public void setUsuarioAsociado(Usuario usuario) {
+        this.usuarioAsociado = usuario;
+    }
+
+    public Usuario getUsuarioAsociado() {
+        return usuarioAsociado;
     }
 }
 

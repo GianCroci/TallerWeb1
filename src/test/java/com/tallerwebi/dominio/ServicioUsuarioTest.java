@@ -28,10 +28,12 @@ public class ServicioUsuarioTest {
         when(repositorioPerfil.buscar(idPerfil)).thenReturn(perfil);
 
         ServicioUsuario servicioUsuario = new ServicioUsuarioImpl(repositorioUsuario, repositorioPerfil);
+        ServicioPerfil servicioPerfil = new ServicioPerfilImpl(repositorioUsuario, repositorioPerfil);
 
         servicioUsuario.asociarPerfil(mailUsuario, idPerfil);
 
         assertThat(servicioUsuario.getPerfilDeUsuario(mailUsuario), equalTo(idPerfil));
+        assertThat(servicioPerfil.getMailUsuarioAsociado(idPerfil).getUsuarioAsociado().getEmail(), equalTo(mailUsuario));
 
 
     }
