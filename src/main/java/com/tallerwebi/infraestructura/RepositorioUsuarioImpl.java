@@ -18,6 +18,10 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
         this.sessionFactory = sessionFactory;
     }
 
+    public RepositorioUsuarioImpl() {
+
+    }
+
     @Override
     public Usuario buscarUsuario(String email, String password) {
 

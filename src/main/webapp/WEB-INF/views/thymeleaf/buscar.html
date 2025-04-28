@@ -28,6 +28,6 @@
     </tbody>
 </table>
 
-    <p th:if="${#lists.isEmpty(resultados)}">No se encontraron resultados!</p>
+    <p th:if="${resultados != null and #lists.isEmpty(resultados)}">No se encontraron resultados!</p>
 </body>
 </html>

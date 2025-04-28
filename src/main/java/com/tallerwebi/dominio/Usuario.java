@@ -1,9 +1,6 @@
 package com.tallerwebi.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Usuario {
@@ -15,6 +12,16 @@ public class Usuario {
     private String password;
     private String rol;
     private Boolean activo = false;
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Perfil perfilAsociado;
+
+    public Perfil getPerfilAsociado() {
+        return perfilAsociado;
+    }
+
+    public void setPerfilAsociado(Perfil perfilAsociado) {
+        this.perfilAsociado = perfilAsociado;
+    }
 
     public Long getId() {
         return id;
@@ -53,5 +60,9 @@ public class Usuario {
 
     public void activar() {
         activo = true;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfilAsociado = perfil;
     }
 }
