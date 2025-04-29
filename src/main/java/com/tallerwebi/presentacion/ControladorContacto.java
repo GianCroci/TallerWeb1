@@ -33,7 +33,7 @@ public class ControladorContacto {
 
         ModelMap modelMap = new ModelMap();
         modelMap.put("datosContacto", contacto);
-        modelMap.put("mensaje", contacto.getNombre() + " su mensaje fue recibido");
+        modelMap.put("mensaje", "su mensaje fue recibido");
 
         return new ModelAndView("confirmacion", modelMap);
     }

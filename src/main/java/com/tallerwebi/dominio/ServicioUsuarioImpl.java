@@ -36,7 +36,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
         Usuario usuario = repositorioUsuario.buscar(mailUsuario);
         Perfil perfil = repositorioPerfil.buscar(idPerfil);
         usuario.setPerfil(perfil);
-        perfil.setUsuarioAsociado(usuario);
+        perfil.setUsuario(usuario);
     }
 
 

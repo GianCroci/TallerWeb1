@@ -1,8 +1,6 @@
 package com.tallerwebi.dominio;
 
 import com.tallerwebi.infraestructura.RepositorioPerfil;
-import com.tallerwebi.infraestructura.RepositorioPerfilImpl;
-import com.tallerwebi.infraestructura.RepositorioUsuarioImpl;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -33,7 +31,7 @@ public class ServicioUsuarioTest {
         servicioUsuario.asociarPerfil(mailUsuario, idPerfil);
 
         assertThat(servicioUsuario.getPerfilDeUsuario(mailUsuario), equalTo(idPerfil));
-        assertThat(servicioPerfil.getMailUsuarioAsociado(idPerfil).getUsuarioAsociado().getEmail(), equalTo(mailUsuario));
+        assertThat(servicioPerfil.getMailUsuarioAsociado(idPerfil).getUsuario().getEmail(), equalTo(mailUsuario));
 
 
     }

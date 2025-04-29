@@ -21,7 +21,7 @@ public class ControladorContactoTest {
         ModelAndView modelAndView = controladorContacto.procesarFormulario(contacto);
 
         String vistaEsperada = "confirmacion";
-        String mensajeEsperado = "Gian su mensaje fue recibido";
+        String mensajeEsperado = "su mensaje fue recibido";
 
         assertThat(vistaEsperada, equalTo(modelAndView.getViewName()));
         assertThat(mensajeEsperado, equalTo(modelAndView.getModel().get("mensaje")));
